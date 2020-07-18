@@ -2,7 +2,9 @@ package com.webbrowser.wruapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,24 +19,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-
+    SharedPreferences sharedpreferences;
     EditText uname,pword;
     Button login;
     TextView signup;
-
+    public static final String MyPREFERENCES = "MyPrefs" ;
     String suname,spword;
     boolean bresult;
-
+    public static final String Name = "nameKey";
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
+
+
+
         uname = findViewById( R.id.uname );
         pword = findViewById( R.id.pword );
         login = findViewById( R.id.login );
         signup = findViewById( R.id.signup );
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         login.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println( dataSnapshot.getValue() );
                 if((dataSnapshot.child("uname").getValue(String.class)).equals( suname )&&(dataSnapshot.child( "pword" ).getValue(String.class)).equals( spword ))
                 {
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(Name, suname);
+                    //  editor.putString(Password, spword);
+                    //  editor.putString(Email, e);
+                    editor.commit();
                     Intent intent = new Intent( getApplicationContext(), HomeActivity.class);
                     startActivity( intent );
                     finish();

@@ -3,7 +3,9 @@ package com.webbrowser.wruapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class SignupActivity extends AppCompatActivity {
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Name = "nameKey";
+    public static final String Password = "passwordKey";
+    SharedPreferences sharedpreferences;
 
     EditText uname,fname,lname,pword,email;
     Button signup;
@@ -37,6 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         pword = findViewById( R.id.pword );
         email = findViewById( R.id.email );
         signup = findViewById( R.id.signup );
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         signup.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -44,6 +51,11 @@ public class SignupActivity extends AppCompatActivity {
                 rxData();
                 if(validateSignup()){
                     saveToBase();
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(Name, suname);
+                  //  editor.putString(Password, spword);
+                  //  editor.putString(Email, e);
+                    editor.commit();
                     Intent intent = new Intent( getApplicationContext(), MainActivity.class );
                     startActivity( intent );
                 }

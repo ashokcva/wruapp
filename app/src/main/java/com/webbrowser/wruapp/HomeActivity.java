@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
@@ -45,6 +46,10 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences shf = getSharedPreferences("MyPrefs",
+                        MODE_PRIVATE);
+                shf.edit().clear().commit();
+
                 Intent intent = new Intent( getApplicationContext(), MainActivity.class );
                 startActivity( intent );
 
