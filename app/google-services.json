@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "939450607061",
+    "firebase_url": "https://wruapp-5ae1d.firebaseio.com",
+    "project_id": "wruapp-5ae1d",
+    "storage_bucket": "wruapp-5ae1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939450607061:android:609956506b41274598c95c",
+        "android_client_info": {
+          "package_name": "com.webbrowser.wruapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939450607061-8eie6k0s1tcnp3rd1m8o7oav36ss5vcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvvRTQZi9aksiQrGm7W7vXuLaDH__4XTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939450607061-8eie6k0s1tcnp3rd1m8o7oav36ss5vcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
